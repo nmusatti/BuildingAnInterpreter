@@ -19,11 +19,17 @@ class Node(BaseBox):
 class Integer(Node):
     def __init__(self, value):
         self.value = int(value)
+    
+    def __repr__(self):
+        return "Integer(%d)" % self.value
 
 
 class String(Node):
     def __init__(self, value):
         self.value = str(value)
+    
+    def __repr__(self):
+        return "String(%s)" % self.value
 
 
 class BinaryOperation(Node):
@@ -32,14 +38,23 @@ class BinaryOperation(Node):
         self.first = first
         self.second = second
 
+    def __repr__(self):
+        return "BinaryOperation(%s, %s, %s)" % ( self.op, self.first, self.second )
+
 
 class Assign(Node):
     def __init__(self, var, value):
         self.var = var
         self.value = value
+    
+    def __repr__(self):
+        return "Assign(%s, %s)" % ( self.var, self.value )
 
 
 class Output(Node):
     def __init__(self, var):
         self.var = var
+    
+    def __repr__(self):
+        return "Output(%s)" % self.var
 
